@@ -1,0 +1,8 @@
+# /root/.kermrc
+
+set port /dev/ttyU1
+set speed 9600
+set flow-control rts/cts
+set carrier-watch off
+
+server

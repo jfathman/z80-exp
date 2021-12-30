@@ -1,0 +1,50 @@
+	ORG	0100H
+
+	JP	START
+
+;-------------------------------------
+; SUBRT: TIMER
+; ENTRY: DE = INITIAL TIMER DOWN COUNT
+;-------------------------------------
+TIMER:	PUSH	AF
+LOOP1:	DEC	DE
+	LD	A,D
+	OR	E
+	JP	NZ,LOOP1
+	POP	AF	
+	RET
+
+; -------------------------
+; SUBRT: SETLED
+; ENTRY: A = LED BIT VALUES
+;--------------------------
+LEDPORT	EQU	40H
+SETLED:	OUT	(LEDPORT),A
+	RET
+
+;--------------
+; SUBRT: LEDOFF
+;--------------
+LEDOFF:	LD	A,0
+	CALL	SETLED
+	RET
+		
+START:
+	LD	A,1
+WAIT:
+	CALL	SETLED
+
+	LD	DE,0FFFH
+	CALL	TIMER
+		
+	INC	A
+	JP	NZ,WAIT
+
+	LD	DE,0FFFFH
+	CALL	TIMER
+
+	CALL	LEDOFF	
+
+	RET
+
+	END

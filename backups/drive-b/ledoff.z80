@@ -1,0 +1,9 @@
+	ORG	0100H
+
+	LD	A,0
+		
+	OUT	(40H),A
+
+	RET
+
+	END

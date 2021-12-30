@@ -1,0 +1,15 @@
+Z80ASM SuperFast Relocating Macro Assembler     	    Z80ASM 1.30 Page   1
+LEDOFF  Z80
+
+    1         0100      	ORG	0100H
+    2                   
+    3 0100  3E 00       	LD	A,0
+    4                   		
+    5 0102  D3 40       	OUT	(40H),A
+    6                   
+    7 0104  C9          	RET
+    8                   
+    9                   	END
+ 0 Error(s) Detected.
+ 5 Absolute Bytes. 0 Symbols Detected.
+
